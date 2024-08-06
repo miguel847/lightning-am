@@ -1,0 +1,8 @@
+{
+  "name": "lightning-am",
+  "dependencies": [
+    "fmt",
+    "nlohmann-json",
+    "pugixml"
+  ]
+}
