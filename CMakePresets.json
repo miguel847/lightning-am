@@ -6,27 +6,14 @@
     "patch": 0
 	},
 	"configurePresets": [
-		{
-			"name": "debug",
-			"generator": "MinGW Makefiles",
-			"binaryDir": "${sourceDir}/build",
-			"cacheVariables": {
-				"CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
-				"CMAKE_BUILD_TYPE": "Debug",
-        "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic",
-        "VCPKG_HOST_TRIPLET": "x64-mingw-dynamic"
-			}
-		},
-		{
-			"name": "release",
-			"generator": "MinGW Makefiles",
-			"binaryDir": "${sourceDir}/build",
-			"cacheVariables": {
-				"CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
-				"CMAKE_BUILD_TYPE": "Release",
-        "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic",
-        "VCPKG_HOST_TRIPLET": "x64-mingw-dynamic"
-			}
-		}
+    {
+      "name": "gcc",
+      "generator": "MinGW Makefiles",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "VCPKG_HOST_TRIPLET": "x64-mingw-dynamic",
+        "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic"
+      }
+    }
 	]
 }

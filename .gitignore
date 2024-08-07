@@ -36,3 +36,4 @@ build
 todo.txt
 mocks
 fSS
+CMakeUserPresets.json
