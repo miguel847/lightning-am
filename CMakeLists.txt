@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
 
-set(VCPKG_TARGET_TRIPLET x64-mingw-dynamic)
-set(VCPKG_HOST_TRIPLET x64-mingw-dynamic)
 set(SRC_DIRECTORY src)
 
 project(lightning-am LANGUAGES CXX)
