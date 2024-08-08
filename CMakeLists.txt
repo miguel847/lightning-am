@@ -12,6 +12,7 @@ find_package(fmt REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(pugixml CONFIG REQUIRED)
 find_package(unordered_dense CONFIG REQUIRED)
+find_package(CLI11 CONFIG REQUIRED)
 
 add_library(definitionsOfTranslation ${SRC_DIRECTORY}/definitionsOfTranslation.cpp)
 target_link_libraries(definitionsOfTranslation PRIVATE nlohmann_json::nlohmann_json)
@@ -25,6 +26,8 @@ endif()
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIRECTORY})
 target_link_libraries(${PROJECT_NAME} PRIVATE definitionsOfTranslation)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE CLI11::CLI11)
 target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
 target_link_libraries(${PROJECT_NAME} PRIVATE pugixml::shared pugixml::pugixml)

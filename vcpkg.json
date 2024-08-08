@@ -4,6 +4,7 @@
     "fmt",
     "nlohmann-json",
     "pugixml",
-    "unordered-dense"
+    "unordered-dense",
+    "cli11"
   ]
 }
