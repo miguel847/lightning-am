@@ -17,6 +17,7 @@ find_package(CLI11 CONFIG REQUIRED)
 add_library(definitionsOfTranslation ${SRC_DIRECTORY}/definitionsOfTranslation.cpp)
 target_link_libraries(definitionsOfTranslation PRIVATE nlohmann_json::nlohmann_json)
 target_link_libraries(definitionsOfTranslation PRIVATE unordered_dense::unordered_dense)
+target_link_libraries(definitionsOfTranslation PRIVATE pugixml::shared pugixml::pugixml)
 
 add_executable(${PROJECT_NAME} ${SRC_DIRECTORY}/main.cpp)
 
