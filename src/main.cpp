@@ -1,36 +1,32 @@
 #include <iostream>
 #include <fmt/core.h>
 #include <pugixml.hpp>
+#include <CLI/CLI.hpp>
 #include <string>
 #include "cstring"
+#include <vector>
 
 using namespace std;
 
-int main(int argc, char *argv[]){
+int main(int argc, char** argv){
   
-  bool fileFound = false;
-  std::string fileName;
+  string fileName = "default";
+  vector<string> plugins = {};
 
-  for (int i = 0; i < argc; ++i){
-    if (strcmp(argv[i],"-f") == 0){
-      if (argv[i+1] != nullptr){
-        fmt::print("{} \n", argv[i+1]);
-        fileFound = true;
-        fileName = argv[i+1];
-      }
-      else {
-        fmt::print("xml file not passed or passed incorectly");
-        return -1;
-      }
-    }
+  CLI::App app{"Convert Alight Motion xml elements to After effects presets"};
+  app.add_option("-f,--file", fileName, "-f yourfilename.xml, required")->required()->check(CLI::ExistingFile);
+  app.add_option("-p,--plugins", plugins, "Pass all the plugins available that could be used instead of native AE effects");
+
+  CLI11_PARSE(app, argc, argv);
+
+
+  fmt::print("Plugins: [");
+  for (auto i : plugins){
+    fmt::print("{},", i);
   }
-  if (!fileFound){
-    fmt::print("Xml file hasnt been found, use -f file_name when executing file in command line");
-    return -1;
-  }
+  fmt::print("] \n");
 
   pugi::xml_document doc;
   pugi::xml_parse_result data = doc.load_file(fileName.c_str());
-	fmt::print("Size of data: {} \n", sizeof(data));
 	return 0;
 }
