@@ -2,6 +2,7 @@
 #include <fmt/core.h>
 #include <pugixml.hpp>
 #include <CLI/CLI.hpp>
+#include <definitionsOfTranslation.hpp>
 #include <string>
 #include "cstring"
 #include <vector>
@@ -27,6 +28,16 @@ int main(int argc, char** argv){
   fmt::print("] \n");
 
   pugi::xml_document doc;
-  pugi::xml_parse_result data = doc.load_file(fileName.c_str());
+  const pugi::xml_parse_result data = doc.load_file(fileName.c_str());
+
+  //Operations begin
+  Translator translator;
+  translator.initialize();
+
+  for(pugi::xml_node clip : doc.child("scene").children("shape")){
+    fmt::print("Passing clip of id: {} \n", clip.attribute("id").value());
+    translator.translateAndWriteClip(clip, plugins);
+    fmt::print("\n");
+  }
 	return 0;
 }

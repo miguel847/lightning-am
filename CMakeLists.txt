@@ -7,6 +7,7 @@ project(lightning-am LANGUAGES CXX)
 file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
 set(OUTPUT_DIR ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
 set(EXECUTABLE_OUTPUT_PATH ${OUTPUT_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${OUTPUT_DIR})
 
 find_package(fmt REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
@@ -15,6 +16,9 @@ find_package(unordered_dense CONFIG REQUIRED)
 find_package(CLI11 CONFIG REQUIRED)
 
 add_library(definitionsOfTranslation ${SRC_DIRECTORY}/definitionsOfTranslation.cpp)
+target_include_directories(definitionsOfTranslation PRIVATE ${SRC_DIRECTORY})
+
+target_link_libraries(definitionsOfTranslation PRIVATE fmt::fmt)
 target_link_libraries(definitionsOfTranslation PRIVATE nlohmann_json::nlohmann_json)
 target_link_libraries(definitionsOfTranslation PRIVATE unordered_dense::unordered_dense)
 target_link_libraries(definitionsOfTranslation PRIVATE pugixml::shared pugixml::pugixml)
