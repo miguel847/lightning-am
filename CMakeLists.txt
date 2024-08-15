@@ -18,6 +18,10 @@ find_package(CLI11 CONFIG REQUIRED)
 add_library(definitionsOfTranslation ${SRC_DIRECTORY}/definitionsOfTranslation.cpp)
 target_include_directories(definitionsOfTranslation PRIVATE ${SRC_DIRECTORY})
 
+if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+	target_compile_options(definitionsOfTranslation PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+
 target_link_libraries(definitionsOfTranslation PRIVATE fmt::fmt)
 target_link_libraries(definitionsOfTranslation PRIVATE nlohmann_json::nlohmann_json)
 target_link_libraries(definitionsOfTranslation PRIVATE unordered_dense::unordered_dense)
